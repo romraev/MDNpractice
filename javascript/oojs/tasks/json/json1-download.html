@@ -42,9 +42,17 @@
       let total = 0;
       let male = 0;
 
-      // Add your code here
+      const cats = JSON.parse(catString)
 
-      // Don't edit the code below here!
+      for (let i = 0; i < cats.length - 1; i++) {
+        motherInfo += `${cats[i].name}, `
+        total += cats[i].kittens.length
+        for (const kitten of cats[i].kittens) {
+          if(kitten.gender === "m") male++
+        }
+      }
+      motherInfo += "\t\t\n and " + cats[cats.length-1].name
+      kittenInfo = `Total: ${total}. Male: ${male} Female: ${total - male}`
 
       para1.textContent = motherInfo;
       para2.textContent = kittenInfo;
